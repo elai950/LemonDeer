@@ -56,7 +56,7 @@ open class M3u8Parser {
         if tsSegmentArray.count > 0 { tsSegmentArray.removeAll() }
         
         let segmentRange = m3u8Content.range(of: "#EXTINF:")!
-        let segmentsString = String(m3u8Content.characters.suffix(from: segmentRange.lowerBound)).components(separatedBy: "#EXT-X-ENDLIST")
+        let segmentsString = String(m3u8Content.suffix(from: segmentRange.lowerBound)).components(separatedBy: "#EXT-X-ENDLIST")
         var segmentArray = segmentsString[0].components(separatedBy: "\r\n")
         
         if segmentArray.contains("#EXT-X-DISCONTINUITY") {
